@@ -1,9 +1,26 @@
 import pandas as pd
 from pathlib import Path
 
+# --------------------------------------------------
+# 1. Set raw data folder
+# --------------------------------------------------
+
 raw_folder = Path("data/raw")
 
-csv_files = list(raw_folder.glob("*.csv"))
+
+# --------------------------------------------------
+# 2. Find all original CSV datasets
+# --------------------------------------------------
+
+csv_files = [
+    file for file in raw_folder.glob("*.csv")
+    if file.name.startswith(tuple(str(i).zfill(2) for i in range(1, 11)))
+]
+
+
+# --------------------------------------------------
+# 3. Load and inspect each CSV dataset
+# --------------------------------------------------
 
 for file in csv_files:
 
@@ -11,27 +28,30 @@ for file in csv_files:
     print(f"FILE: {file.name}")
     print("=" * 60)
 
+    # Load CSV file
     df = pd.read_csv(file)
 
-    print("Shape:", df.shape)
+    # Print shape
+    print("\nShape:")
+    print(df.shape)
 
-    print("\nColumns:")
-    print(df.columns.tolist())
+    # Print data types
+    print("\nData Types:")
+    print(df.dtypes)
 
-    print("\nMissing Values by Column:")
+    # Print first 5 rows
+    print("\nFirst 5 Rows:")
+    print(df.head())
+
+    # Print missing values
+    print("\nMissing Values:")
     print(df.isnull().sum())
 
-    print("\nTotal Missing Values:")
-    print(df.isnull().sum().sum())
-
+    # Print duplicate rows
     print("\nDuplicate Rows:")
     print(df.duplicated().sum())
 
-    # Missing values உள்ள file-ன் rows மட்டும் பார்க்க
-    if df.isnull().sum().sum() > 0:
-
-        print("\nRows with Missing Values:")
-        print(
-            df[df.isnull().any(axis=1)].to_string(index=False)
-        )
+print("\n" + "=" * 60)
+print("All 10 CSV datasets loaded and inspected successfully!")
+print("=" * 60)
 
