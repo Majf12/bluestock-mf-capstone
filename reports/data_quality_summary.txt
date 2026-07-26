@@ -1,0 +1,33 @@
+Day 1 : 
+---------------------------------------------------------------------------------
+Task 4 : API DATA VALIDATION
+---------------------------------------------------------------------------------
+The API scheme code 125497 returned
+"SBI Small Cap Fund - Direct Plan - Growth"
+instead of HDFC Top 100 Direct as mentioned in the task description.
+
+Therefore, the API response scheme name was used as the source of truth.
+----------------------------------------------------------------------------------
+Task 5 : API SCHEME NAME VALIDATION :
+----------------------------------------------------------------------------------
+All 5 API requests returned HTTP Status Code 200.
+Some API scheme names did not match the names mentioned in the task description.
+The actual scheme names returned by the API were used as the source of truth.
+The AMFI codes were cross-checked with the fund master dataset.
+Status: PASS with documented scheme name mismatches.
+-----------------------------------------------------------------------------------
+Task 7 : DATA QUALITY SUMMARY
+-----------------------------------------------------------------------------------
+Dataset : 01_fund_master.csv
+Total Fund Master AMFI Codes : 40
+
+Dataset : 02_nav_history.csv
+Total NAV History AMFI Codes : 40
+
+Missing AMFI Codes : 0
+
+Result : 
+All AMFI codes in fund_master exist in nav_history.
+
+Data Quality Status : 
+PASS
