@@ -1,6 +1,6 @@
 import pandas as pd
 
-# Fund Master dataset load செய்கிறோம்
+# Fund Master dataset load
 fund_master = pd.read_csv(
     "data/raw/01_fund_master.csv"
 )
@@ -45,22 +45,22 @@ print("=" * 60)
 # Task 7: AMFI Code Validation
 # --------------------------------------------------
 
-# Fund Master-ல் உள்ள AMFI codes
+# Fund Master AMFI codes
 fund_codes = set(
     fund_master["amfi_code"]
 )
 
-# NAV History dataset load செய்கிறோம்
+# NAV History dataset load
 nav_history = pd.read_csv(
     "data/raw/02_nav_history.csv"
 )
 
-# NAV History-ல் உள்ள AMFI codes
+# NAV History AMFI codes
 nav_codes = set(
     nav_history["amfi_code"]
 )
 
-# Fund Master-ல் இருக்கும் ஆனால் NAV History-ல் இல்லாத codes
+# Fund Master have but nav history have no codes
 missing_codes = fund_codes - nav_codes
 
 
