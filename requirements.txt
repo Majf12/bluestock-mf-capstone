@@ -6,3 +6,5 @@ plotly
 sqlalchemy
 requests
 jupyter
+
+# Day 1 dependencies
